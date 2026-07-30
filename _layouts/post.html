@@ -1,0 +1,52 @@
+---
+layout: default
+---
+
+<article class="article">
+  <header class="article-header shell article-shell">
+    <a class="back-link" href="{{ '/' | relative_url }}">← Все статьи</a>
+    <p class="article-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%d.%m.%Y' }}</time>
+      {% assign words = content | number_of_words %}
+      {% assign minutes = words | divided_by: 180 | plus: 1 %}
+      <span aria-hidden="true">·</span>
+      <span>{{ minutes }} мин чтения</span>
+    </p>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="article-lead">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  <div class="shell article-shell prose">
+    {{ content }}
+  </div>
+
+  {% if page.tags.size > 0 %}
+    <footer class="shell article-shell article-footer">
+      <p>Темы</p>
+      <ul class="tag-list">
+        {% for tag in page.tags %}
+          <li>{{ tag }}</li>
+        {% endfor %}
+      </ul>
+    </footer>
+  {% endif %}
+
+  {% if page.previous or page.next %}
+    <nav class="shell article-shell post-navigation" aria-label="Другие статьи">
+      {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}">
+          <span>Предыдущая</span>
+          {{ page.previous.title }}
+        </a>
+      {% endif %}
+      {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}">
+          <span>Следующая</span>
+          {{ page.next.title }}
+        </a>
+      {% endif %}
+    </nav>
+  {% endif %}
+</article>

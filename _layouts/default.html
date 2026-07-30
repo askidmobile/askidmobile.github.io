@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Перейти к содержанию</a>
+
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="{{ '/' | relative_url }}" aria-label="На главную">
+          <span class="brand-mark" aria-hidden="true">A</span>
+          <span>{{ site.title }}</span>
+        </a>
+
+        <nav class="site-nav" aria-label="Основная навигация">
+          <a href="{{ '/' | relative_url }}">Статьи</a>
+          <a href="{{ '/about/' | relative_url }}">О сайте</a>
+          <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content">
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <p>© {{ site.time | date: '%Y' }} {{ site.author.name }}.</p>
+        <p><a href="{{ '/feed.xml' | relative_url }}">Подписаться через RSS</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

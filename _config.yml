@@ -1,0 +1,43 @@
+title: "Askid"
+tagline: "Статьи и заметки"
+description: "Личный блог о технологиях, разработке и идеях."
+url: "https://askidmobile.github.io"
+baseurl: ""
+lang: "ru_RU"
+timezone: "Europe/Moscow"
+
+author:
+  name: "Askid"
+
+permalink: /articles/:title/
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: feed.xml
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: "Askid"
+
+sass:
+  style: compressed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
